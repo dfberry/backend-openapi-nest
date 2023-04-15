@@ -63,3 +63,10 @@ $ npm run test:cov
 * [repo](https://github.com/shanurrahman/Nest-Fastify)
 * [/api](http://localhost:8080/api)
 * [/docs](http://localhost:8080/docs)
+
+* [sequelize example](https://github.com/nestjs/nest/tree/master/sample/07-sequelize)'
+* [config settings article](https://www.tomray.dev/nestjs-config)  
+
+## DB
+
+I don't need to create the tables, when the app starts and can connect, it creates the User table for me. 
