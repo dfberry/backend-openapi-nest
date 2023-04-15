@@ -7,6 +7,7 @@ import config from './config/configuration';
 
 const configModule = ConfigModule.forRoot({
   isGlobal: true,
+  cache: true,
   load: [config],
 });
 
