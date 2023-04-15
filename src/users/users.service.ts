@@ -2,12 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './models/user.model';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectModel(User)
     private readonly userModel: typeof User,
+    private readonly configService: ConfigService,
   ) {}
 
   create(createUserDto: CreateUserDto): Promise<User> {
@@ -18,6 +20,10 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
+    // TBE: Experimental only
+    const port = this.configService.get<number>('port');
+    console.log(port);
+
     return this.userModel.findAll();
   }
 
