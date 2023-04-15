@@ -58,3 +58,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+# Dina's notes
+
+* [repo](https://github.com/shanurrahman/Nest-Fastify)
+* [/api](http://localhost:8080/api)
+* [/docs](http://localhost:8080/docs)
