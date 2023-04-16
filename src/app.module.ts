@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
+import { CacheModule } from '@nestjs/cache-manager';
 
 // environment variables
 import { ConfigModule } from '@nestjs/config';
@@ -26,7 +27,10 @@ const sequelizeOptions: SequelizeModuleOptions = {
 };
 const dbModule = SequelizeModule.forRoot(sequelizeOptions);
 
+// caching
+const cacheModule = CacheModule.register({ isGlobal: true });
+
 @Module({
-  imports: [CatsModule, UsersModule, dbModule, configModule],
+  imports: [CatsModule, UsersModule, dbModule, configModule, cacheModule],
 })
 export class AppModule {}

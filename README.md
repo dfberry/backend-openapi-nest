@@ -67,6 +67,12 @@ $ npm run test:cov
 * [sequelize example](https://github.com/nestjs/nest/tree/master/sample/07-sequelize)'
 * [config settings article](https://www.tomray.dev/nestjs-config)  
     * Search for `TBE` for `to be experimental` to see how to use it
+* [cache]
+    * The default expiration time of cache is 5 seconds
+    * `@UseInterceptors` decorator only works on Get requests, and is not currently supported in GraphQL resolvers. So basically, you can just use the @CacheInterceptor decorator on any REST Get endpoint.
+    * [With redis](https://www.tomray.dev/nestjs-caching-redis)
+    * [Tom Wray's repo](https://github.com/tomwray13/nestjs-caching)
+
 
 ## DB
 
