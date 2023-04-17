@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
 import { CacheModule } from '@nestjs/cache-manager';
-
+import { AdminController } from './cache.controller';
 // environment variables
 import { ConfigModule } from '@nestjs/config';
 import config from './config/configuration';
@@ -28,9 +28,16 @@ const sequelizeOptions: SequelizeModuleOptions = {
 const dbModule = SequelizeModule.forRoot(sequelizeOptions);
 
 // caching
-const cacheModule = CacheModule.register({ isGlobal: true });
+//const cacheModule = CacheModule.register();
 
 @Module({
-  imports: [CatsModule, UsersModule, dbModule, configModule, cacheModule],
+  imports: [
+    CacheModule.register({ isGlobal: true }),
+    CatsModule,
+    UsersModule,
+    dbModule,
+    configModule,
+  ],
+  controllers: [AdminController],
 })
 export class AppModule {}

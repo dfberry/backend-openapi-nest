@@ -5,15 +5,17 @@ import {
   Get,
   Param,
   Post,
-  UseInterceptors,
-  CacheTTL,
+  UseInterceptors
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './models/user.model';
 import { UsersService } from './users.service';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 
+
 @Controller('users')
+@UseInterceptors(CacheInterceptor)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -22,8 +24,6 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @UseInterceptors(CacheInterceptor)
-  @CacheTTL(2) // 2 seconds
   @Get()
   findAll(): Promise<User[]> {
     return this.usersService.findAll();
